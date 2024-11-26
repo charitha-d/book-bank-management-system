@@ -9,12 +9,12 @@
  */
 import java.sql.*;
 import javax.swing.*;
-public class RemoveStaff extends javax.swing.JFrame {
+public class DeleteStudents extends javax.swing.JFrame {
 
     /**
-     * Creates new form RemoveStaff
+     * Creates new form DeleteStudents
      */
-    public RemoveStaff() {
+    public DeleteStudents() {
         initComponents();
         setDefaultCloseOperation(RemoveStaff.DISPOSE_ON_CLOSE);
     }
@@ -36,7 +36,7 @@ public class RemoveStaff extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jLabel1.setFont(new java.awt.Font("PMingLiU-ExtB", 1, 16)); // NOI18N
-        jLabel1.setText("             ENTER STAFF ID OR STAFF NAME TO DELETE");
+        jLabel1.setText("         ENTER STUDENT ID OR STUDENT NAME TO DELETE");
 
         t1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -67,31 +67,31 @@ public class RemoveStaff extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(165, 165, 165)
                 .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(111, 111, 111)
+                .addGap(108, 108, 108)
                 .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(109, Short.MAX_VALUE)
+                .addContainerGap(110, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 436, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(95, 95, 95))
+                        .addGap(104, 104, 104))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(t1, javax.swing.GroupLayout.PREFERRED_SIZE, 277, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(170, 170, 170))))
+                        .addGap(179, 179, 179))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(55, 55, 55)
+                .addGap(49, 49, 49)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(31, 31, 31)
+                .addGap(45, 45, 45)
                 .addComponent(t1, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 66, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 86, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(63, 63, 63))
+                .addGap(97, 97, 97))
         );
 
         pack();
@@ -107,26 +107,24 @@ public class RemoveStaff extends javax.swing.JFrame {
         String user="root";
         String pwd="charitha";
         String input=t1.getText();
-        String query="delete from staff where staff_id='"+input+"' or s_name='"+input+"';";
+        String query="delete from students where student_id='"+input+"' or name='"+input+"';";
         try{
             Connection conn=DriverManager.getConnection(url,user,pwd);
             Statement stm=conn.createStatement();
             int rows=stm.executeUpdate(query);
             if(rows>0){
-                JOptionPane.showMessageDialog(this, "staff nremoved from library");
-             
+                JOptionPane.showMessageDialog(this, "student removed from library");
+                
             }
             else{
-                JOptionPane.showMessageDialog(this,"No such staff memeber is available");
+                JOptionPane.showMessageDialog(this,"No such student is present");
             }
-                  t1.setText(null);         
-
+            t1.setText(null);
             stm.close();
         }
         catch(Exception e){
             JOptionPane.showMessageDialog(this,e.getMessage());
         }
-
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
@@ -151,20 +149,20 @@ public class RemoveStaff extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(RemoveStaff.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(DeleteStudents.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(RemoveStaff.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(DeleteStudents.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(RemoveStaff.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(DeleteStudents.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(RemoveStaff.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(DeleteStudents.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new RemoveStaff().setVisible(true);
+                new DeleteStudents().setVisible(true);
             }
         });
     }
